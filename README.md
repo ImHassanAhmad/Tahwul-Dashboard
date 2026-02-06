@@ -45,28 +45,24 @@ A React-based compliance and planning dashboard built with TypeScript and Vite.
   - **Dashboard:** Overview with metric cards, compliance/audit scores, progress, timeline, and recent activities.  
   - **Planning:** Planning view with overview, evidence table, comments, and circular progress.
 - **Components:** Reusable UI is split into small components (e.g. `Card`, `DataTable`, `ComplianceScoreChart`, `Input`, `Dot`) under `src/components/`, with page-specific pieces under each page’s `components/` folder.
-- **Data & styling:** Data is currently in-page or in constants (no backend). Styling is done with Tailwind and utility classes; tables use `@tanstack/react-table`, charts use ApexCharts.
+- **Data & styling:** Data is currently in-page or in constants. Styling is done with Tailwind and utility classes; tables use `@tanstack/react-table`, charts use ApexCharts.
 - **Error handling:** `react-error-boundary` wraps the app and shows a fallback UI on errors.
 
 ---
 
 ## Assumptions
 
-- **No backend:** All data is mock/static. No API calls or environment variables for services.
-- **Modern browsers:** Target is recent, evergreen browsers that support ES modules and the used React/TS features.
-- **Single user / no auth:** No login, roles, or permissions; the UI is built for a single user flow.
-- **Routing:** Root `/` redirects to the main app route; all main views are client-side routes.
-- **Details page entry:** From the Figma it was unclear where the details (Planning) page would open from, so it was assumed that it opens when clicking any of the cards in the **Progress Status** section on the Dashboard.
-- **Node/npm:** Project is run and built with Node.js and npm; no other package managers or runtimes are assumed.
+- **Dashboard route:** The Figma second screen has the dashboard selected, so it is treated as a route within the dashboard. The **Progress Status** cards are linked to that route—you can click on a card to view the Planning (details) page.
 
 ---
 
 ## What I would improve with more time
 
-- **Backend & API:** Replace mock data with real APIs, add loading and error states, and consider React Query or SWR for data fetching and caching.
+- **Responsiveness:** Improve layout and UX for smaller screens; current focus was on desktop with limited time and limited design resource for mobile/tablet.
+- **Tailwind theme config:** Introduce a proper Tailwind theme configuration (e.g. design tokens, extended theme) for larger apps to improve codebase management and consistency.
+- **Charts:** Align charts more closely with the designs for better accuracy (spacing, colors, labels, proportions).
+- **State management:** Add a state management tool (e.g. Redux or Zustand) once we reach the integration stage for API data and shared app state.
 - **Testing:** Add unit tests (e.g. Vitest) for utilities and key components, and integration/E2E tests (e.g. Playwright) for critical flows.
 - **Accessibility:** Audit with aXe or similar, improve keyboard navigation and screen reader support, and ensure focus management in modals and tables.
-- **State management:** Introduce a global store (e.g. Zustand or Redux) if shared state grows beyond what props and local state can handle.
 - **Performance:** Code-split by route, lazy-load heavy pages, and optimize chart and table rendering for large datasets.
 - **UX polish:** Skeleton loaders, clearer empty states, toast notifications for actions, and optional dark mode.
-- **DevOps:** Dockerfile and/or CI pipeline for build and deploy, plus basic health/readiness checks if a server is added later.
