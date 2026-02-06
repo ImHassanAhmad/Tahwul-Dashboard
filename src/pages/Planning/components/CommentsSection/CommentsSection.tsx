@@ -28,15 +28,15 @@ const CommentsSection: FC<CommentsSectionProps> = ({ comments, onAddComment }) =
                         <div className="rounded-lg border border-[#E0E8ED] bg-white p-3">
                             <div className="mb-2 flex items-center gap-2">
                                 <span
-                                    className="w-[24px] h-[24px] flex shrink-0 items-center justify-center rounded-full bg-[#E0E8ED] text-[14px] font-extrabold text-[#8597A8]"
+                                    className="w-6 h-6 flex shrink-0 items-center justify-center rounded-full bg-[#E0E8ED] text-sm font-extrabold text-[#8597A8]"
                                     aria-hidden
                                 >
                                     {c.author.charAt(0)}
                                 </span>
-                                <span className="flex-1 text-[14px] leading-[16px] font-bold text-[#1D3557]">{c.author}</span>
-                                <span className="text-[14px] leading-[16px] font-normal text-[#8597A8]">{c.date}</span>
+                                <span className="flex-1 text-sm leading-4 font-bold text-[#1D3557]">{c.author}</span>
+                                <span className="text-sm leading-4 font-normal text-[#8597A8]">{c.date}</span>
                             </div>
-                            <p className="text-[14px] leading-[20px] font-normal text-[#1D3557]">{c.text}</p>
+                            <p className="text-sm leading-5 font-normal text-[#1D3557]">{c.text}</p>
                         </div>
                     </li>
                 ))}
@@ -52,7 +52,7 @@ const CommentsSection: FC<CommentsSectionProps> = ({ comments, onAddComment }) =
                 <button
                     type="button"
                     onClick={handlePost}
-                    className="mt-[16px] inline-flex w-fit items-center gap-2 rounded-lg bg-[#1D3557] px-4 py-2 text-sm font-medium text-white hover:bg-[#152942]"
+                    className="mt-4 inline-flex w-fit items-center gap-2 rounded-lg bg-[#1D3557] px-4 py-2 text-sm font-medium text-white hover:bg-[#152942]"
                 >
                     <Icons variant={IconsVariant.Send} />
                     Post Comment

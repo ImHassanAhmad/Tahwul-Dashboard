@@ -1,8 +1,12 @@
-import { type FC, useEffect, useRef } from 'react';
+import { type FC, useEffect, useRef, useState } from 'react';
 import ApexCharts from 'apexcharts';
 
 const CHART_COLOR_BELOW_70 = '#DB1F26';
 const CHART_COLOR_70_AND_ABOVE = '#1EA54E';
+const MIN_CHART_HEIGHT = 120;
+
+/** Use this height for the chart container when showing multiple semi-radial charts so they match in size. */
+export const SEMI_RADIAL_CHART_CONTAINER_HEIGHT = 260;
 
 export interface SemiRadialChartProps {
     score: number;
@@ -11,18 +15,35 @@ export interface SemiRadialChartProps {
 }
 
 const SemiRadialChart: FC<SemiRadialChartProps> = ({ score, subtitle, className = '' }) => {
+    const wrapperRef = useRef<HTMLDivElement>(null);
     const chartRef = useRef<HTMLDivElement>(null);
     const chartInstance = useRef<ApexCharts | null>(null);
+    const [height, setHeight] = useState(MIN_CHART_HEIGHT);
 
     const fillColor = score < 70 ? CHART_COLOR_BELOW_70 : CHART_COLOR_70_AND_ABOVE;
 
     useEffect(() => {
-        if (!chartRef.current) return;
+        const wrapper = wrapperRef.current;
+        if (!wrapper) return;
+
+        const ro = new ResizeObserver((entries) => {
+            const { height: h } = entries[0]?.contentRect ?? {};
+            if (typeof h === 'number' && h > 0) {
+                setHeight(Math.max(MIN_CHART_HEIGHT, Math.floor(h)));
+            }
+        });
+        ro.observe(wrapper);
+        setHeight(Math.max(MIN_CHART_HEIGHT, Math.floor(wrapper.getBoundingClientRect().height)));
+        return () => ro.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!chartRef.current || height < MIN_CHART_HEIGHT) return;
 
         const options: ApexCharts.ApexOptions = {
             chart: {
                 type: 'radialBar',
-                height: 520,
+                height: height,
                 sparkline: { enabled: false },
             },
             plotOptions: {
@@ -36,7 +57,7 @@ const SemiRadialChart: FC<SemiRadialChartProps> = ({ score, subtitle, className 
                     },
                     track: {
                         background: '#E8E8E8',
-                        strokeWidth: '100%',
+                        strokeWidth: '80%',
                         margin: 0,
                     },
                     dataLabels: {
@@ -67,14 +88,14 @@ const SemiRadialChart: FC<SemiRadialChartProps> = ({ score, subtitle, className 
             chartInstance.current?.destroy();
             chartInstance.current = null;
         };
-    }, [score, subtitle, fillColor]);
+    }, [score, subtitle, fillColor, height]);
 
     return (
-        <div className={`relative min-h-0 ${className}`.trim()}>
-            <div ref={chartRef} className="min-h-0" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none">
-                <p className="mb-6 text-[44px] font-bold leading-4 text-[#1D3557]">{score}%</p>
-                <p className="text-sm font-normal leading-4 text-[#8597A8] mt-1">{subtitle}</p>
+        <div ref={wrapperRef} className={`relative h-full w-full min-h-0 overflow-hidden ${className}`.trim()}>
+            <div ref={chartRef} className="h-full min-h-0 w-full" style={{ minHeight: MIN_CHART_HEIGHT }} />
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                <p className="text-center font-bold text-[#1D3557] leading-tight mb-1 text-[clamp(1.5rem,5vw,3.25rem)]">{score}%</p>
+                <p className="text-center text-sm sm:text-base font-normal text-[#8597A8] leading-tight max-w-[90%] truncate">{subtitle}</p>
             </div>
         </div>
     );

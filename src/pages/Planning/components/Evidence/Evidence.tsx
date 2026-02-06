@@ -14,7 +14,7 @@ interface EvidenceProps {
 const Evidence: FC<EvidenceProps> = ({ comments, onAddComment }) => {
     return (
         <>
-            <Card variant="light" className="p-4 sm:p-5 mb-[16px]">
+            <Card variant="light" className="p-4 sm:p-5 mb-4">
                 <EvidenceTable rows={EVIDENCE_TABLE_ROWS} />
             </Card>
 

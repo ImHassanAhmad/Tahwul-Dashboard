@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import Card from '../../../../components/Card';
-import SemiRadialChart from '../../../../components/SemiRadialChart';
+import SemiRadialChart, { SEMI_RADIAL_CHART_CONTAINER_HEIGHT } from '../../../../components/SemiRadialChart';
 
 const SCORE = 80;
 const SUBTITLE = 'Readiness Level';
@@ -14,7 +14,7 @@ const AuditReadinessScore: FC = () => {
     return (
         <Card variant="light" className="p-4 h-[322px] flex flex-col">
             <p className="text-base font-bold leading-4 text-[#1D3557] mb-5">Audit Readiness</p>
-            <div className="flex-1 min-h-0">
+            <div className="min-h-0" style={{ height: SEMI_RADIAL_CHART_CONTAINER_HEIGHT }}>
                 <SemiRadialChart score={SCORE} subtitle={SUBTITLE} />
             </div>
             <div className="flex justify-between border-t border-[#E0E8ED]">

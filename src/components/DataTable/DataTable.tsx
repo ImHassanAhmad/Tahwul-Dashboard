@@ -46,13 +46,13 @@ function DataTable<TData extends RowData>({ columns, data, minWidth = '800px' }:
     return (
         <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-sm" style={{ minWidth }}>
-                <thead className="h-[40px] bg-[#F5F8FB]">
+                <thead className="h-10 bg-[#F5F8FB]">
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id} className="bg-[#F5F8FB]">
                             {headerGroup.headers.map((header) => (
                                 <th
                                     key={header.id}
-                                    className="py-[11px] px-[16px] font-normal text-[12px] leading-[100%] text-[#1D3557] first:rounded-l-[10px] last:rounded-r-[10px] last:pr-0"
+                                    className="py-[11px] px-4 font-normal text-xs leading-[100%] text-[#1D3557] first:rounded-l-[10px] last:rounded-r-[10px] last:pr-0"
                                 >
                                     <div
                                         className="flex items-center [th:last-child_&]:justify-center"
@@ -77,7 +77,7 @@ function DataTable<TData extends RowData>({ columns, data, minWidth = '800px' }:
                     {table.getRowModel().rows.map((row) => (
                         <tr key={row.id} className="border-b border-[#E0E8ED] last:border-0">
                             {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id} className="py-3 px-4 text-[14px] text-[#1D3557] last:pr-0">
+                                <td key={cell.id} className="py-3 px-4 text-sm text-[#1D3557] last:pr-0">
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </td>
                             ))}

@@ -18,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Sidebar open={sidebarOpen} onClose={handleSidebarToggle} />
             <div className="flex flex-1 flex-col min-h-screen min-w-0">
                 <TopBar onMenuClick={handleSidebarToggle} />
-                <main className="bg-[#F5F8FA] flex-1 overflow-y-auto overflow-x-hidden max-h-[calc(100vh-56px)] px-[24px] py-[16px]">{children}</main>
+                <main className="bg-[#F5F8FA] flex-1 overflow-y-auto overflow-x-hidden max-h-[calc(100vh-56px)] px-6 py-4">{children}</main>
             </div>
         </div>
     );

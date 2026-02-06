@@ -29,7 +29,7 @@ const CircularProgress: FC<CircularProgressProps> = ({ percentage, size = 120, s
                     className="transition-[stroke-dashoffset] duration-500"
                 />
             </svg>
-            <span className="absolute text-[14px] font-bold leading-4 text-[#1D3557]">{percentage}%</span>
+            <span className="absolute text-sm font-bold leading-4 text-[#1D3557]">{percentage}%</span>
         </div>
     );
 };

@@ -16,7 +16,7 @@ const PLANNING_TABS = [
     { id: 'evidence' as const, label: 'Evidence' },
 ] as const;
 
-const tabButton = cva('transition-colors duration-300 ease-in-out cursor-pointer rounded-[8px] m-[3px] px-[21px] text-[14px] font-normal', {
+const tabButton = cva('transition-colors duration-300 ease-in-out cursor-pointer rounded-lg m-[3px] px-[21px] text-sm font-normal', {
     variants: {
         active: {
             true: 'bg-white text-[#1D3557]',
@@ -50,18 +50,15 @@ const Planning: FC = () => {
                 aria-label="Back to Dashboard"
             >
                 <Icons variant={IconsVariant.Back} />
-                <h1 className="text-[16px] font-bold text-[#1D3557] leading-[16px]">Digital Transformation Strategic Planning</h1>
+                <h1 className="text-base font-bold text-[#1D3557] leading-4">Digital Transformation Strategic Planning</h1>
             </button>
-            <Card
-                variant="light"
-                className="p-[16px] mb-[16px] flex flex-col gap-3 min-[960px]:flex-row min-[960px]:items-start min-[960px]:justify-between"
-            >
+            <Card variant="light" className="p-4 mb-4 flex flex-col gap-3 min-[960px]:flex-row min-[960px]:items-start min-[960px]:justify-between">
                 <div className="min-w-0">
-                    <div className="mb-[8.42px] cursor-pointer border border-[#E0E8ED] py-[3px] px-[10px] rounded-[30px] w-fit mb-[8 px]">
-                        <p className="text-[12px] leading-[22px] font-medium text-[#8597A8]">Strategy & Planning</p>
+                    <div className="mb-[8.42px] cursor-pointer border border-[#E0E8ED] py-[3px] px-2.5 rounded-[30px] w-fit mb-2">
+                        <p className="text-xs leading-[22px] font-medium text-[#8597A8]">Strategy & Planning</p>
                     </div>
-                    <p className="mb-[8.42px] text-[16px] leading-[16px] font-bold text-[#1D3557]">Digital Transformation Strategic Planning</p>
-                    <p className="text-[14px] leading-[16px] font-normal text-[#8597A8]">
+                    <p className="mb-[8.42px] text-base leading-4 font-bold text-[#1D3557]">Digital Transformation Strategic Planning</p>
+                    <p className="text-sm leading-4 font-normal text-[#8597A8]">
                         Develop Comprehensive Strategic Plans For Digital Transformation Aligned With Organizational Goals
                     </p>
                 </div>
@@ -70,7 +67,7 @@ const Planning: FC = () => {
                 </div>
             </Card>
 
-            <div className="grid grid-cols-2 gap-4 min-[960px]:grid-cols-4 mb-[16px]">
+            <div className="grid grid-cols-2 gap-4 min-[960px]:grid-cols-4 mb-4">
                 {EVIDENCE_METRIC_CARDS.map((item) => (
                     <Card key={item.id} variant="light" className="flex gap-4 items-center p-4">
                         <Icons variant={item.icon} />
@@ -82,7 +79,7 @@ const Planning: FC = () => {
                 ))}
             </div>
 
-            <div className="bg-[#EAF0F3] mb-4 flex rounded-[8px] w-fit h-[40px]">
+            <div className="bg-[#EAF0F3] mb-4 flex rounded-lg w-fit h-10">
                 {PLANNING_TABS.map((tab) => (
                     <button key={tab.id} type="button" onClick={() => setActiveTab(tab.id)} className={tabButton({ active: activeTab === tab.id })}>
                         {tab.label}

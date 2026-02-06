@@ -55,7 +55,7 @@ const EvidenceTable: FC<EvidenceTableProps> = ({ rows }) => {
                     return (
                         <div className="flex w-full items-center justify-center">
                             <span
-                                className={`h-[30px] inline-flex items-center justify-center rounded-full px-2.5 py-0.5 text-[14px] leading-[20px] font-medium whitespace-nowrap ${statusClasses[status]}`}
+                                className={`h-[30px] inline-flex items-center justify-center rounded-full px-2.5 py-0.5 text-sm leading-5 font-medium whitespace-nowrap ${statusClasses[status]}`}
                             >
                                 {status}
                             </span>
