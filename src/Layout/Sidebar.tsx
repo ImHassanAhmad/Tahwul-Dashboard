@@ -106,7 +106,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
                                 className={navItem({ open, active: isActive })}
                             >
                                 <span className="shrink-0">
-                                    <Icons variant={item.icon} color={isActive ? '#ffffff' : undefined} size={18} />
+                                    <Icons variant={item.icon} color={isActive ? '#ffffff' : undefined} />
                                 </span>
                                 {open && <span className="truncate leading-snug">{item.label}</span>}
                             </button>

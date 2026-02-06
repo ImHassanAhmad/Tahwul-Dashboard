@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# Tahwul
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based compliance and planning dashboard built with TypeScript and Vite.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to run the project
 
-## React Compiler
+**Prerequisites:** Node.js (v18+ recommended) and npm.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   The app will be available at `http://localhost:5173` (or the port shown in the terminal).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+4. **Preview the production build**
+   ```bash
+   npm run preview
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+5. **Lint**
+   ```bash
+   npm run lint
+   npm run lint:fix   # auto-fix where possible
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## How the code was built
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Stack:** React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router 7.
+- **Structure:** The app uses a single layout (sidebar + top bar) wrapping all pages. Routes are defined in `src/routes/` and rendered via `AppRoutes` with a shared `Layout`.
+- **Pages:**  
+  - **Dashboard:** Overview with metric cards, compliance/audit scores, progress, timeline, and recent activities.  
+  - **Planning:** Planning view with overview, evidence table, comments, and circular progress.
+- **Components:** Reusable UI is split into small components (e.g. `Card`, `DataTable`, `ComplianceScoreChart`, `Input`, `Dot`) under `src/components/`, with page-specific pieces under each page’s `components/` folder.
+- **Data & styling:** Data is currently in-page or in constants (no backend). Styling is done with Tailwind and utility classes; tables use `@tanstack/react-table`, charts use ApexCharts.
+- **Error handling:** `react-error-boundary` wraps the app and shows a fallback UI on errors.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## Assumptions
+
+- **No backend:** All data is mock/static. No API calls or environment variables for services.
+- **Modern browsers:** Target is recent, evergreen browsers that support ES modules and the used React/TS features.
+- **Single user / no auth:** No login, roles, or permissions; the UI is built for a single user flow.
+- **Routing:** Root `/` redirects to the main app route; all main views are client-side routes.
+- **Details page entry:** From the Figma it was unclear where the details (Planning) page would open from, so it was assumed that it opens when clicking any of the cards in the **Progress Status** section on the Dashboard.
+- **Node/npm:** Project is run and built with Node.js and npm; no other package managers or runtimes are assumed.
+
+---
+
+## What I would improve with more time
+
+- **Backend & API:** Replace mock data with real APIs, add loading and error states, and consider React Query or SWR for data fetching and caching.
+- **Testing:** Add unit tests (e.g. Vitest) for utilities and key components, and integration/E2E tests (e.g. Playwright) for critical flows.
+- **Accessibility:** Audit with aXe or similar, improve keyboard navigation and screen reader support, and ensure focus management in modals and tables.
+- **State management:** Introduce a global store (e.g. Zustand or Redux) if shared state grows beyond what props and local state can handle.
+- **Performance:** Code-split by route, lazy-load heavy pages, and optimize chart and table rendering for large datasets.
+- **UX polish:** Skeleton loaders, clearer empty states, toast notifications for actions, and optional dark mode.
+- **DevOps:** Dockerfile and/or CI pipeline for build and deploy, plus basic health/readiness checks if a server is added later.
