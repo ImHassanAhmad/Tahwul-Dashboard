@@ -27,7 +27,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     { id: '6', date: 'August 21', label: 'Cycle Conclusion', isCompleted: false },
 ];
 
-export const CURRENT_PHASE_LABEL = 'Bilal Hassan';
+export const CURRENT_PHASE_LABEL = 'Progress Phase';
 
 export const TIMELINE_YEARS = ['2024', '2025', '2026', '2027'] as const;
 

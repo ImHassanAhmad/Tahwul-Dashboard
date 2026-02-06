@@ -4,13 +4,13 @@ import ApexCharts from 'apexcharts';
 const CHART_COLOR_BELOW_70 = '#DB1F26';
 const CHART_COLOR_70_AND_ABOVE = '#1EA54E';
 
-export interface ComplianceScoreChartProps {
+export interface SemiRadialChartProps {
     score: number;
     subtitle: string;
     className?: string;
 }
 
-const ComplianceScoreChart: FC<ComplianceScoreChartProps> = ({ score, subtitle, className = '' }) => {
+const SemiRadialChart: FC<SemiRadialChartProps> = ({ score, subtitle, className = '' }) => {
     const chartRef = useRef<HTMLDivElement>(null);
     const chartInstance = useRef<ApexCharts | null>(null);
 
@@ -80,4 +80,4 @@ const ComplianceScoreChart: FC<ComplianceScoreChartProps> = ({ score, subtitle, 
     );
 };
 
-export default ComplianceScoreChart;
+export default SemiRadialChart;

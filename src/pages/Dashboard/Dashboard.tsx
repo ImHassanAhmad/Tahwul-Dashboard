@@ -21,10 +21,16 @@ const Dashboard: FC = () => {
                 <ProgressStatus />
                 <CategoryCardsGrid />
             </Card>
-            <div className="flex gap-4 mt-4">
-                <OverallComplianceScore />
-                <TopPerformingLeaders />
-                <RecentActivities />
+            <div className="flex flex-wrap gap-4 mt-4">
+                <div className="w-full min-w-0 min-[1000px]:flex-1">
+                    <OverallComplianceScore />
+                </div>
+                <div className="flex-1 min-w-[200px]">
+                    <TopPerformingLeaders />
+                </div>
+                <div className="flex-1 min-w-[200px]">
+                    <RecentActivities />
+                </div>
             </div>
             <div className="flex gap-4 mt-4">
                 <DashboardCardPlaceholder />

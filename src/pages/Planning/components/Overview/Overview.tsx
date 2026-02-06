@@ -6,8 +6,8 @@ import { OVERVIEW_ROWS, OVERVIEW_LEADERS } from '../../constants';
 const Overview: FC = () => {
     return (
         <div className="flex flex-col gap-[16px]">
-            <Card variant="light" className="relative p-[19px] grid gap-[16.41px] sm:grid-cols-[auto_1fr]">
-                <div className="absolute top-0 left-[265px] h-full w-px bg-[#E0E8ED]" />
+            <Card variant="light" className="relative p-[19px] grid gap-[16.41px] min-[960px]:grid-cols-[auto_1fr]">
+                <div className="absolute top-0 left-[265px] h-full w-px bg-[#E0E8ED] hidden min-[960px]:block" />
                 {OVERVIEW_ROWS.map((row) => (
                     <div key={row.label} className="contents">
                         <div className="rounded-[8px] bg-[#F5F8FB] px-4 py-3 text-[16px] leading-[16px] font-medium text-[#1D3557]">{row.label}</div>

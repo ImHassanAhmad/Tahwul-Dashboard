@@ -52,7 +52,10 @@ const Planning: FC = () => {
                 <Icons variant={IconsVariant.Back} />
                 <h1 className="text-[16px] font-bold text-[#1D3557] leading-[16px]">Digital Transformation Strategic Planning</h1>
             </button>
-            <Card variant="light" className="p-[16px] mb-[16px] flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <Card
+                variant="light"
+                className="p-[16px] mb-[16px] flex flex-col gap-3 min-[960px]:flex-row min-[960px]:items-start min-[960px]:justify-between"
+            >
                 <div className="min-w-0">
                     <div className="mb-[8.42px] cursor-pointer border border-[#E0E8ED] py-[3px] px-[10px] rounded-[30px] w-fit mb-[8 px]">
                         <p className="text-[12px] leading-[22px] font-medium text-[#8597A8]">Strategy & Planning</p>
@@ -62,12 +65,12 @@ const Planning: FC = () => {
                         Develop Comprehensive Strategic Plans For Digital Transformation Aligned With Organizational Goals
                     </p>
                 </div>
-                <div className="flex shrink-0 justify-center sm:justify-end">
+                <div className="flex shrink-0 justify-center min-[960px]:justify-end">
                     <CircularProgress percentage={100} size={80} />
                 </div>
             </Card>
 
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-[16px]">
+            <div className="grid grid-cols-2 gap-4 min-[960px]:grid-cols-4 mb-[16px]">
                 {EVIDENCE_METRIC_CARDS.map((item) => (
                     <Card key={item.id} variant="light" className="flex gap-4 items-center p-4">
                         <Icons variant={item.icon} />

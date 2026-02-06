@@ -1,5 +1,5 @@
 import React, { type ReactNode, useState } from 'react';
-import Sidebar from './Sidebar';
+import Sidebar, { SIDEBAR_BREAKPOINT } from './Sidebar';
 import TopBar from './TopBar';
 
 interface LayoutProps {
@@ -7,7 +7,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(() => (typeof window !== 'undefined' ? window.innerWidth >= SIDEBAR_BREAKPOINT : true));
 
     const handleSidebarToggle = () => {
         setSidebarOpen(!sidebarOpen);

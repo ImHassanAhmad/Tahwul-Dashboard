@@ -47,7 +47,7 @@ interface SidebarProps {
     onClose: () => void;
 }
 
-const SIDEBAR_BREAKPOINT = 1000;
+export const SIDEBAR_BREAKPOINT = 1000;
 
 const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     const navigate = useNavigate();

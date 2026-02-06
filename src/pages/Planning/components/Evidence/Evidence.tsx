@@ -22,7 +22,7 @@ const Evidence: FC<EvidenceProps> = ({ comments, onAddComment }) => {
                 <div className="min-w-0 flex-1">
                     <CommentsSection comments={comments} onAddComment={onAddComment} />
                 </div>
-                <RecentActivities className="w-[380px]" />
+                <RecentActivities className="w-full lg:w-[380px]" />
             </div>
         </>
     );

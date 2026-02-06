@@ -10,9 +10,9 @@ interface RecentActivitiesProps {
 
 const RecentActivities: FC<RecentActivitiesProps> = ({ className }) => {
     return (
-        <Card variant="light" className={twMerge('h-72 w-full p-4', className)}>
-            <p className="text-base font-bold leading-4 text-[#1D3557] mb-5">Recent Activities</p>
-            <ul className="flex flex-col divide-y divide-[#E0E8ED]">
+        <Card variant="light" className={twMerge('h-[283px] w-full py-4', className)}>
+            <p className="text-base px-4 font-bold leading-4 text-[#1D3557] mb-5">Recent Activities</p>
+            <ul className="overflow-y-auto h-[210px] px-4 flex flex-col divide-y divide-[#E0E8ED]">
                 {RECENT_ACTIVITIES.map((activity) => (
                     <li key={activity.id} className="flex items-start gap-4 py-4 first:pt-0 last:pb-0">
                         <Dot color="red" className="h-1.5 w-1.5 shrink-0 mt-2" />
