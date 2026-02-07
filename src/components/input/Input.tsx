@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes, ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
@@ -9,14 +9,19 @@ const inputField = cva(
 );
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    icon?: React.ReactNode;
+    icon?: ReactNode;
 }
 
-const Input = ({ icon, className = '', ...props }: InputProps) => {
+const Input = ({ icon, className = '', type = 'text', id, ...props }: InputProps) => {
+    const inputId = id ?? props.name;
     return (
         <div className={twMerge(inputWrapper(), className)}>
-            {icon && <span className="flex items-center justify-center">{icon}</span>}
-            <input type="text" className={inputField()} {...props} />
+            {icon && (
+                <span className="flex items-center justify-center shrink-0" aria-hidden>
+                    {icon}
+                </span>
+            )}
+            <input id={inputId} type={type} className={inputField()} {...props} />
         </div>
     );
 };

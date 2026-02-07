@@ -1,4 +1,5 @@
-import type { FC } from 'react';
+import type { FC, ReactElement } from 'react';
+import { useState } from 'react';
 import {
     flexRender,
     getCoreRowModel,
@@ -8,7 +9,6 @@ import {
     type RowData,
     type SortingState,
 } from '@tanstack/react-table';
-import { useState } from 'react';
 
 const SortIcon: FC = () => (
     <span className="ml-1 inline-flex shrink-0 align-middle text-[#1D3557] cursor-pointer">
@@ -30,10 +30,10 @@ export interface DataTableProps<TData extends RowData> {
     minWidth?: string;
 }
 
-function DataTable<TData extends RowData>({ columns, data, minWidth = '800px' }: DataTableProps<TData>) {
+function DataTable<TData extends RowData>({ columns, data, minWidth = '800px' }: DataTableProps<TData>): ReactElement {
     const [sorting, setSorting] = useState<SortingState>([]);
 
-    // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table returns unstable refs by design; table instance is consumed only in this component
+    // eslint-disable-next-line react-hooks/incompatible-library
     const table = useReactTable({
         data,
         columns,

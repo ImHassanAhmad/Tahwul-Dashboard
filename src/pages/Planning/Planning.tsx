@@ -2,14 +2,15 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cva } from 'class-variance-authority';
-import Card from '../../components/Card';
-import { Icons, IconsVariant } from './icons';
-import { RouteNames } from '../../constants/routes';
+import Card from '@/components/Card';
+import StatCard from '@/components/StatCard';
+import { RouteNames } from '@/constants/routes';
 import type { PlanningComment } from './constants';
 import { EVIDENCE_METRIC_CARDS, PLANNING_COMMENTS } from './constants';
 import CircularProgress from './components/CircularProgress';
 import Overview from './components/Overview';
 import Evidence from './components/Evidence';
+import { Icons, IconsVariant } from './icons';
 
 const PLANNING_TABS = [
     { id: 'overview' as const, label: 'Overview' },
@@ -67,15 +68,9 @@ const Planning: FC = () => {
                 </div>
             </Card>
 
-            <div className="grid grid-cols-2 gap-4 min-[960px]:grid-cols-4 mb-4">
+            <div className="mb-4 grid grid-cols-2 gap-4 min-[960px]:grid-cols-4">
                 {EVIDENCE_METRIC_CARDS.map((item) => (
-                    <Card key={item.id} variant="light" className="flex gap-4 items-center p-4">
-                        <Icons variant={item.icon} />
-                        <div className="min-w-0">
-                            <p className="mb-1 font-bold text-2xl leading-8 text-[#1D3557]">{item.value}</p>
-                            <p className="font-normal text-sm leading-4 text-[#8597A8]">{item.label}</p>
-                        </div>
-                    </Card>
+                    <StatCard key={item.id} value={item.value} label={item.label} icon={<Icons variant={item.icon} />} />
                 ))}
             </div>
 

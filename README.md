@@ -37,6 +37,18 @@ A React-based compliance and planning dashboard built with TypeScript and Vite.
 
 ---
 
+## Technical decisions and code quality
+
+- **Path aliases:** `@/` is configured (Vite + TypeScript) so imports from `src` stay consistent and avoid deep relative paths (e.g. `@/components/Card`, `@/pages/Dashboard/constants`).
+- **Route-level code splitting:** Dashboard and Planning are loaded with `React.lazy()` and wrapped in `<Suspense>` so initial bundle size stays smaller and heavy pages load on demand.
+- **Error handling:** The app is wrapped in `react-error-boundary` with a dedicated fallback that shows the error message and a “Go to home” recovery action.
+- **TypeScript:** Strict mode is enabled; shared types live in `routes/types.ts`, component props are typed, and constants use typed interfaces (e.g. `TimelineEvent`, `CategoryGridColumn`).
+- **Styling:** Reusable UI uses **CVA** (class-variance-authority) and **tailwind-merge** for variant-based styling and predictable class merging (e.g. `Card`, `Dot`, `Input`, sidebar).
+- **Accessibility:** Skip link (“Skip to main content”) is available for keyboard users; `main` has `id="main-content"` and `tabIndex={-1}` for focus target; error fallback uses `role="alert"`; interactive table headers support keyboard (Enter to sort).
+- **Testing:** Vitest is set up with a small test suite (e.g. `getTimelineProgressPercent` in `src/pages/Dashboard/constants`). Run `npm run test` (or `npm run test:watch`). More tests can be added for components and flows as needed.
+
+---
+
 ## How the code was built
 
 - **Stack:** React 19, TypeScript, Vite 7, Tailwind CSS 4, React Router 7.

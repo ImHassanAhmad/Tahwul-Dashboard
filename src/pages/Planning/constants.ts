@@ -78,7 +78,6 @@ export interface PlanningActivity {
     timeAgo: string;
 }
 
-// Overview section: label + content rows
 export const OVERVIEW_ROWS: { label: string; content: string }[] = [
     {
         label: 'Objective',

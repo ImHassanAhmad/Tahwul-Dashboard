@@ -111,7 +111,6 @@ export const PROGRESS_STATUS_CATEGORIES: ProgressStatusCategory[] = [
     { id: '10', label: 'Research And Innovation', percentage: '17.65%' },
 ];
 
-// Top performing leaders (for TopPerformingLeaders card)
 export interface Leader {
     id: string;
     name: string;
@@ -126,7 +125,6 @@ export const TOP_PERFORMING_LEADERS: Leader[] = [
     { id: '3', name: 'Mohammad Al-Mansour', perspective: 'IT Perspective', score: 92, avatarInitials: 'MM' },
 ];
 
-// Dashboard bottom row cards (label + content key for rendering)
 export interface DashboardCardItem {
     id: string;
     label: string;
@@ -150,7 +148,6 @@ export const RECENT_ACTIVITIES: RecentActivityItem[] = [
     { id: '3', description: 'New Criterion "5.3 Digital Identity" Was Created By Admin', timeAgo: '1 Hour Ago' },
 ];
 
-// Category cards grid (title + numbered status dots)
 export interface CategoryGridDot {
     number: number;
     color: DotColor;
@@ -169,9 +166,7 @@ export interface CategoryGridColumn {
 
 export const CATEGORY_GRID_COLUMNS_PER_CHUNK = 5;
 
-// 10 columns, each with its category cards (column-first structure per design)
 export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
-    // Column 1: 3 cards
     {
         id: 'col-1',
         cards: [
@@ -205,7 +200,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 2: 3 cards
     {
         id: 'col-2',
         cards: [
@@ -239,7 +233,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 3: 1 card
     {
         id: 'col-3',
         cards: [
@@ -255,7 +248,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 4: 2 cards
     {
         id: 'col-4',
         cards: [
@@ -285,7 +277,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 5: 3 cards
     {
         id: 'col-5',
         cards: [
@@ -324,7 +315,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 6: 1 card
     {
         id: 'col-6',
         cards: [
@@ -345,7 +335,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 7: 2 cards
     {
         id: 'col-7',
         cards: [
@@ -370,7 +359,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 8: 3 cards
     {
         id: 'col-8',
         cards: [
@@ -406,7 +394,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 9: 3 cards
     {
         id: 'col-9',
         cards: [
@@ -439,7 +426,6 @@ export const CATEGORY_GRID_COLUMNS: CategoryGridColumn[] = [
             },
         ],
     },
-    // Column 10: 2 cards
     {
         id: 'col-10',
         cards: [

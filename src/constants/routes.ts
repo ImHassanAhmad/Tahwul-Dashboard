@@ -8,3 +8,5 @@ export const RouteNames = {
     REPORTS: 'reports',
     USERS_AND_ROLES: 'users-and-roles',
 } as const;
+
+export type RoutePath = (typeof RouteNames)[keyof typeof RouteNames];

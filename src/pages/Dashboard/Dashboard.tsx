@@ -10,7 +10,7 @@ import {
     DashboardCardPlaceholder,
     AuditReadinessScore,
 } from './components/DashboardCards';
-import Card from '../../components/Card';
+import Card from '@/components/Card';
 
 const Dashboard: FC = () => {
     return (

@@ -5,7 +5,6 @@ const CHART_COLOR_BELOW_70 = '#DB1F26';
 const CHART_COLOR_70_AND_ABOVE = '#1EA54E';
 const MIN_CHART_HEIGHT = 120;
 
-/** Use this height for the chart container when showing multiple semi-radial charts so they match in size. */
 export const SEMI_RADIAL_CHART_CONTAINER_HEIGHT = 260;
 
 export interface SemiRadialChartProps {
@@ -95,7 +94,9 @@ const SemiRadialChart: FC<SemiRadialChartProps> = ({ score, subtitle, className 
             <div ref={chartRef} className="h-full min-h-0 w-full" style={{ minHeight: MIN_CHART_HEIGHT }} />
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                 <p className="text-center font-bold text-[#1D3557] leading-tight mb-1 text-[clamp(1.5rem,5vw,3.25rem)]">{score}%</p>
-                <p className="text-center text-sm sm:text-base font-normal text-[#8597A8] leading-tight max-w-[90%] truncate">{subtitle}</p>
+                <p className="text-nowrap text-center text-sm sm:text-base font-normal text-[#8597A8] leading-tight max-w-[90%] truncate">
+                    {subtitle}
+                </p>
             </div>
         </div>
     );
